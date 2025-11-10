@@ -1,5 +1,4 @@
 {
-  "itemGroup.custom_background_music": "Example Mod Tab",
-  "block.custom_background_music.example_block": "Example Block",
-  "item.custom_background_music.example_item": "Example Item"
+  "key.custom_background_music.open_gui": "Open Custom Music GUI",
+  "key.categories.custom_background_music": "Custom Background Music"
 }
