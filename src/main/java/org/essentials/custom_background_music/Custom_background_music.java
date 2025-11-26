@@ -20,16 +20,16 @@ public class Custom_background_music {
         // Register config
         modContainer.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);
 
-        // Register key binding
-        modEventBus.addListener(KeyBindings::register);
+        // Register key bindings (on mod event bus)
+        modEventBus.addListener(KeyBindings::registerBindings);
 
-        // Register client tick event
+        // Register client tick event (on forge event bus)
         NeoForge.EVENT_BUS.addListener(this::onClientTick);
     }
 
     private void onClientTick(ClientTickEvent.Post event) {
-        // Check if keybinding is initialized before using it
-        if (KeyBindings.OPEN_MUSIC_GUI != null && KeyBindings.OPEN_MUSIC_GUI.consumeClick()) {
+        // Check if the key was pressed
+        if (KeyBindings.OPEN_MUSIC_GUI.consumeClick()) {
             MusicGuiScreen.open();
         }
     }
