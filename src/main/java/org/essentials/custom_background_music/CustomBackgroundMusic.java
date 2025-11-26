@@ -19,13 +19,16 @@ public class CustomBackgroundMusic {
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);
 
+        // Register keybindings on the mod event bus
         modEventBus.addListener(KeyBindings::registerBindings);
 
+        // Tick listener for detecting key presses
         NeoForge.EVENT_BUS.addListener(this::onClientTick);
     }
 
     private void onClientTick(ClientTickEvent.Post event) {
-        if (KeyBindings.OPEN_MUSIC_GUI.consumeClick()) {
+        // Must use .get() because OPEN_MUSIC_GUI is Lazy<KeyMapping>
+        if (KeyBindings.OPEN_MUSIC_GUI.get().consumeClick()) {
             MusicGuiScreen.open();
         }
     }
